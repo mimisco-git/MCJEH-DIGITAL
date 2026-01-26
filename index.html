@@ -1,0 +1,2171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCJEH Digital - Strategy-Driven Digital Marketing Agency | We Promote, You Grow</title>
+    <meta name="description" content="MCJEH Digital is a premier digital marketing and brand development agency in Southeast Nigeria. Strategy before tactics. Training, branding, and digital growth.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Social Media Icons - Latest Stable Version -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --primary-blue: #0052FF;
+            --dark: #000000;
+            --light-bg: #F5F5F5;
+            --white: #FFFFFF;
+            --text-dark: #1A1A1A;
+            --text-gray: #666666;
+            --border: #E5E5E5;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,0.18);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Fixed Social Media Bar */
+        .social-fixed {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            background: var(--white);
+            box-shadow: var(--shadow-lg);
+            border-radius: 50px 0 0 50px;
+            padding: 1rem 0.5rem;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .social-fixed a {
+            display: flex;
+            width: 50px;
+            height: 50px;
+            margin: 0.5rem 0;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+            color: var(--white);
+            position: relative;
+        }
+
+        .social-fixed a::before {
+            content: attr(data-label);
+            position: absolute;
+            right: 60px;
+            background: var(--dark);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+        }
+
+        .social-fixed a:hover::before {
+            opacity: 1;
+            right: 65px;
+        }
+
+        .social-fixed .whatsapp {
+            background: #25D366;
+        }
+
+        .social-fixed .instagram {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+        }
+
+        .social-fixed .tiktok {
+            background: #000000;
+        }
+
+        .social-fixed .twitter {
+            background: #1DA1F2;
+        }
+
+        .social-fixed a:hover {
+            transform: scale(1.15);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-md);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .logo-section .logo {
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: var(--primary-blue);
+            letter-spacing: 1.5px;
+        }
+
+        .logo-section .tagline {
+            font-size: 0.65rem;
+            color: var(--text-gray);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-cta {
+            padding: 0.75rem 1.75rem;
+            background: var(--primary-blue);
+            color: var(--white) !important;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 82, 255, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-cta:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Carousel */
+        .hero-carousel {
+            margin-top: 85px;
+            position: relative;
+            height: 90vh;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 82, 255, 0.65) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-content {
+            max-width: 1200px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--white);
+            animation: slideUpFade 1s ease-out;
+        }
+
+        .carousel-content h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 15px rgba(0,0,0,0.6);
+            line-height: 1.1;
+        }
+
+        .carousel-content p {
+            font-size: 1.6rem;
+            margin-bottom: 2.5rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+
+        .carousel-dot:hover {
+            background: rgba(255,255,255,0.8);
+        }
+
+        .carousel-dot.active {
+            background: var(--white);
+            width: 45px;
+            border-radius: 10px;
+            border-color: var(--primary-blue);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-bg) 100%);
+        }
+
+        .stats .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .stat-box {
+            background: var(--white);
+            padding: 3.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border-left: 5px solid var(--primary-blue);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 82, 255, 0.05), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+        }
+
+        .stat-box:hover::before {
+            animation: shimmer 1.5s infinite;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-left-width: 8px;
+        }
+
+        .stat-number {
+            font-weight: 900;
+            font-size: 4rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-label {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 2rem;
+            background: var(--white);
+        }
+
+        .about .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 0.6rem 2rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 82, 255, 0.3);
+        }
+
+        .section-header h2 {
+            font-weight: 900;
+            font-size: 3.8rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            font-weight: 600;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        .about-content {
+            font-size: 1.15rem;
+            line-height: 2.2;
+            color: var(--text-dark);
+            max-width: 950px;
+            margin: 0 auto 4rem;
+            text-align: justify;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+            border-left: 5px solid var(--primary-blue);
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .highlight-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 82, 255, 0.05));
+            transition: width 0.4s;
+        }
+
+        .highlight-box:hover::after {
+            width: 100%;
+        }
+
+        .highlight-box:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .highlight-box h4 {
+            font-weight: 900;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            color: var(--dark);
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight-box p {
+            color: var(--text-gray);
+            line-height: 1.9;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Image Gallery Slider */
+        .gallery-slider {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
+            overflow: hidden;
+        }
+
+        .gallery-slider .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .slider-container {
+            position: relative;
+            margin-top: 4rem;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slider-item {
+            min-width: 100%;
+            position: relative;
+            height: 650px;
+        }
+
+        .slider-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, transparent 100%);
+            color: var(--white);
+            padding: 4rem 3rem 3rem;
+        }
+
+        .slider-caption h3 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .slider-caption p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 82, 255, 0.9);
+            color: var(--white);
+            border: none;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.8rem;
+            transition: all 0.3s;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-nav:hover {
+            background: var(--primary-blue);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 5px 20px rgba(0, 82, 255, 0.5);
+        }
+
+        .slider-nav.prev {
+            left: 30px;
+        }
+
+        .slider-nav.next {
+            right: 30px;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 8rem 2rem;
+            background: var(--dark);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(0, 82, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .video-section .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .video-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.4s;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .video-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 40px rgba(0, 82, 255, 0.3);
+            border-color: var(--primary-blue);
+        }
+
+        .video-card video {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+        }
+
+        .video-card h4 {
+            font-weight: 900;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .video-card p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* Workshop Section */
+        .workshop {
+            padding: 8rem 2rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .workshop::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .workshop .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .workshop-content .workshop-label {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            opacity: 0.95;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .workshop-brand {
+            margin-bottom: 2.5rem;
+        }
+
+        .workshop-brand h2 {
+            font-weight: 900;
+            font-size: 6rem;
+            line-height: 0.95;
+            margin-bottom: 1rem;
+            letter-spacing: -3px;
+        }
+
+        .workshop-brand .white-text {
+            color: var(--white);
+        }
+
+        .workshop-brand .blue-box {
+            color: var(--primary-blue);
+            background: var(--white);
+            padding: 0.3rem 1.2rem;
+            display: inline-block;
+        }
+
+        .workshop-cohort {
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .workshop-tagline {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+        }
+
+        .workshop-description {
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-bottom: 3.5rem;
+            opacity: 0.95;
+        }
+
+        .workshop-details-card {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 4rem;
+            box-shadow: var(--shadow-lg);
+            border-radius: 10px;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: baseline;
+            gap: 1.2rem;
+            margin-bottom: 1.8rem;
+            font-size: 1.4rem;
+        }
+
+        .detail-row .label {
+            font-weight: 900;
+            font-style: italic;
+            color: var(--dark);
+        }
+
+        .detail-row .value {
+            font-weight: 700;
+        }
+
+        .pricing-section {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 3px solid var(--light-bg);
+        }
+
+        .early-bird {
+            font-style: italic;
+            color: var(--text-gray);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .price {
+            font-weight: 900;
+            font-size: 4rem;
+            color: var(--primary-blue);
+            margin-bottom: 2.5rem;
+            letter-spacing: -2px;
+        }
+
+        .whatsapp-box {
+            background: var(--light-bg);
+            padding: 2.5rem;
+            margin-top: 2.5rem;
+            border-radius: 8px;
+        }
+
+        .whatsapp-box h4 {
+            font-weight: 900;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .whatsapp-box .label {
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .whatsapp-number {
+            font-weight: 900;
+            font-size: 2.2rem;
+            color: var(--dark);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .whatsapp-number i {
+            color: #25D366;
+        }
+
+        .btn {
+            padding: 1.5rem 3.5rem;
+            font-weight: 900;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-blue);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark);
+            color: var(--white);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Programs Section - Photo Gallery Style */
+        .programs {
+            padding: 8rem 2rem;
+            background: var(--white);
+        }
+
+        .programs .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .program-gallery-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 8rem;
+            align-items: center;
+        }
+
+        .program-gallery-item.reverse {
+            direction: rtl;
+        }
+
+        .program-gallery-item.reverse > * {
+            direction: ltr;
+        }
+
+        .program-media-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            background: var(--dark);
+        }
+
+        .media-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .media-slide {
+            min-width: 100%;
+            position: relative;
+            aspect-ratio: 16/10;
+        }
+
+        .media-slide img,
+        .media-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .media-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 82, 255, 0.9);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-nav:hover {
+            background: var(--primary-blue);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .media-nav.prev {
+            left: 15px;
+        }
+
+        .media-nav.next {
+            right: 15px;
+        }
+
+        .media-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .media-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .media-dots .dot.active {
+            background: var(--white);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .program-info {
+            padding: 2rem 0;
+        }
+
+        .program-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .program-info h3 {
+            font-weight: 900;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            letter-spacing: -1px;
+        }
+
+        .program-description {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .program-highlights {
+            background: var(--light-bg);
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .program-highlights h4 {
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .program-highlights ul {
+            list-style: none;
+        }
+
+        .program-highlights li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+        }
+
+        .program-highlights li i {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+        }
+
+        .program-btn {
+            padding: 1.3rem 3rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 82, 255, 0.3);
+        }
+
+        .program-btn:hover {
+            background: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 6rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 5rem;
+            margin-bottom: 5rem;
+        }
+
+        .footer-brand h3 {
+            font-weight: 900;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            color: var(--primary-blue);
+        }
+
+        .footer-tagline {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+        }
+
+        .footer-brand p {
+            opacity: 0.9;
+            line-height: 2;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2.5rem;
+        }
+
+        .footer-social a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--white);
+            transition: all 0.3s;
+        }
+
+        .footer-social .whatsapp {
+            background: #25D366;
+        }
+
+        .footer-social .instagram {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+        }
+
+        .footer-social .tiktok {
+            background: #000000;
+            border: 2px solid var(--white);
+        }
+
+        .footer-social .twitter {
+            background: #1DA1F2;
+        }
+
+        .footer-social a:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 82, 255, 0.6);
+        }
+
+        .footer-links h4 {
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+            display: block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 12px;
+            color: var(--primary-blue);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 3.5rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            text-align: center;
+            opacity: 0.75;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Animations */
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px) translateY(-50%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) translateY(-50%);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                top: -50%;
+                right: -50%;
+            }
+            100% {
+                top: 150%;
+                right: 150%;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .workshop .container,
+            .program-gallery-item {
+                grid-template-columns: 1fr;
+            }
+
+            .program-gallery-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .carousel-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .workshop-brand h2 {
+                font-size: 4.5rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .program-media-gallery {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.75rem;
+            }
+
+            .social-fixed {
+                display: none;
+            }
+
+            .carousel-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .carousel-content p {
+                font-size: 1.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.8rem;
+            }
+
+            .stats-grid,
+            .program-gallery-item {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .workshop-brand h2 {
+                font-size: 3.5rem;
+            }
+
+            .slider-item {
+                height: 450px;
+            }
+
+            .slider-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .slider-nav.prev {
+                left: 15px;
+            }
+
+            .slider-nav.next {
+                right: 15px;
+            }
+
+            .program-media-gallery {
+                height: 350px;
+            }
+
+            .program-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .program-nav.prev {
+                left: 10px;
+            }
+
+            .program-nav.next {
+                right: 10px;
+            }
+
+            .program-content {
+                padding: 2.5rem 2rem;
+            }
+
+            .program-content h3 {
+                font-size: 2rem;
+            }
+
+            .programs-gallery {
+                gap: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Social Media Bar -->
+    <div class="social-fixed">
+        <a href="https://wa.me/2349081953680" class="whatsapp" target="_blank" data-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/mcjehdigital" class="instagram" target="_blank" data-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@mcjehdigital" class="tiktok" target="_blank" data-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://x.com/McjehDigital" class="twitter" target="_blank" data-label="X (Twitter)">
+            <i class="fab fa-x-twitter"></i>
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo-section">
+                <div class="logo">MCJEH DIGITAL</div>
+                <div class="tagline">Marketing Agency</div>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#workshop">Workshop</a></li>
+                <li><a href="https://wa.me/2349081953680" class="nav-cta">
+                    <i class="fab fa-whatsapp"></i> Contact Us
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Carousel -->
+    <section id="home" class="hero-carousel">
+        <div class="carousel-container">
+            <div class="carousel-slide active" style="background: linear-gradient(135deg, #0052FF 0%, #0041CC 100%);">
+                <div class="carousel-overlay" style="background: none;">
+                    <div class="carousel-content">
+                        <h1>We Promote, You Grow</h1>
+                        <p>Strategy-Driven Digital Marketing Agency in Southeast Nigeria</p>
+                        <a href="https://wa.me/2349081953680?text=Hi%20MCJEH%20Digital,%20I'm%20interested%20in%20your%20services" class="btn btn-primary">
+                            <i class="fab fa-whatsapp"></i> Get Started Today
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-slide" style="background-image: linear-gradient(rgba(0, 82, 255, 0.85), rgba(0, 0, 0, 0.7)), url('images/1769430175823_image.png');">
+                <div class="carousel-overlay" style="background: none;">
+                    <div class="carousel-content">
+                        <h1>Build Brands That Last</h1>
+                        <p>From Confusion to Confidence • Strategy Before Tactics</p>
+                        <a href="#workshop" class="btn btn-primary">
+                            <i class="fas fa-graduation-cap"></i> Join Our Workshop
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-slide" style="background-image: linear-gradient(rgba(0, 82, 255, 0.9), rgba(0, 0, 0, 0.7)), url('images/1769430826700_image.png');">
+                <div class="carousel-overlay" style="background: none;">
+                    <div class="carousel-content">
+                        <h1>Empowering the Next Generation</h1>
+                        <p>Training & Mentoring Digital Talents Across Africa</p>
+                        <a href="#programs" class="btn btn-primary">
+                            <i class="fas fa-users"></i> Explore Programs
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-slide" style="background: linear-gradient(135deg, #0052FF 0%, #000000 100%), url('images/Marketing_Magnet.jpg'); background-size: cover; background-position: center; background-blend-mode: multiply;">
+                <div class="carousel-overlay" style="background: none;">
+                    <div class="carousel-content">
+                        <h1>Marketing Magnet</h1>
+                        <p>Attract & Engage Your Ideal Customers</p>
+                        <a href="https://wa.me/2349081953680?text=I'm%20interested%20in%20Marketing%20Magnet%20program" class="btn btn-primary">
+                            <i class="fas fa-magnet"></i> Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-controls">
+            <span class="carousel-dot active" onclick="currentSlide(0)"></span>
+            <span class="carousel-dot" onclick="currentSlide(1)"></span>
+            <span class="carousel-dot" onclick="currentSlide(2)"></span>
+            <span class="carousel-dot" onclick="currentSlide(3)"></span>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number" data-target="9">0</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Success Stories</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Trained Professionals</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Who We Are</span>
+                <h2>Strategy Before Tactics</h2>
+                <p class="about-content">
+                    McJeh Digital is a strategy-driven digital marketing and brand development agency committed to helping businesses gain clarity, structure, and sustainable growth. Founded on the belief that strategy comes before tactics, we help brands move from confusion to confidence by building strong foundations in branding, marketing, and digital visibility.
+                </p>
+                <p class="about-content">
+                    Our work cuts across branding, content strategy, social media marketing, paid advertising, and business positioning. Beyond client work, we're known for our impact-driven training and capacity building initiatives through programs like BRAND IT, Marketing Magnet, CONVERT IT, and The Awakening Conference.
+                </p>
+            </div>
+
+            <div class="about-highlights">
+                <div class="highlight-box">
+                    <h4>🎯 Our Core Services</h4>
+                    <p>Branding, content strategy, social media marketing, paid advertising, and business positioning that drives measurable results and sustainable growth.</p>
+                </div>
+                <div class="highlight-box">
+                    <h4>📚 Training & Development</h4>
+                    <p>Through The Digital Lab, we train and mentor emerging digital talents. McJeh Teens equips teenagers with practical digital and creative skills.</p>
+                </div>
+                <div class="highlight-box">
+                    <h4>🚀 Our Vision</h4>
+                    <p>Becoming a leading digital hub in Africa - building brands, raising leaders, and driving meaningful digital impact across the continent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" style="background: var(--white); color: var(--primary-blue);">Watch Us in Action</span>
+                <h2 style="color: var(--white);">See Our Impact</h2>
+                <p style="color: rgba(255,255,255,0.95);">Real moments from our workshops, training sessions, and conferences</p>
+            </div>
+
+            <div class="video-grid">
+                <div class="video-card">
+                    <video controls autoplay muted loop playsinline poster="images/1769430175823_image.png">
+                        <source src="videos/brandit.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h4>BRAND IT Workshop</h4>
+                    <p>Uncle Mark teaching powerful brand development strategies and positioning frameworks</p>
+                </div>
+
+                <div class="video-card">
+                    <video controls autoplay muted loop playsinline poster="images/1769430785574_image.png">
+                        <source src="videos/2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h4>The Digital Lab Training</h4>
+                    <p>Hands-on training sessions preparing the next generation of digital marketing professionals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery Slider -->
+    <section class="gallery-slider">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Journey</span>
+                <h2>The Digital Lab in Pictures</h2>
+                <p>Powerful moments from our workshops, conferences, and training sessions across Southeast Nigeria</p>
+            </div>
+
+            <div class="slider-container">
+                <div class="slider-track" id="sliderTrack">
+                    <div class="slider-item">
+                        <img src="images/1769430170509_image.png" alt="CONVERT IT Workshop attendees">
+                        <div class="slider-caption">
+                            <h3>CONVERT IT Workshop</h3>
+                            <p>Engaged participants mastering conversion-focused advertising and sales strategies</p>
+                        </div>
+                    </div>
+
+                    <div class="slider-item">
+                        <img src="images/1769430200250_image.png" alt="Uncle Mark teaching at BRAND IT">
+                        <div class="slider-caption">
+                            <h3>BRAND IT Workshop</h3>
+                            <p>Uncle Mark delivering powerful brand positioning and messaging frameworks</p>
+                        </div>
+                    </div>
+
+                    <div class="slider-item">
+                        <img src="images/1769430183032_image.png" alt="Hands-on workshop activities">
+                        <div class="slider-caption">
+                            <h3>Hands-On Training</h3>
+                            <p>Participants actively applying workshop principles to their real businesses</p>
+                        </div>
+                    </div>
+
+                    <div class="slider-item">
+                        <img src="images/1769430195125_image.png" alt="Young entrepreneurs learning">
+                        <div class="slider-caption">
+                            <h3>McJeh Teens Program</h3>
+                            <p>Empowering the next generation with digital and creative skills</p>
+                        </div>
+                    </div>
+
+                    <div class="slider-item">
+                        <img src="images/1769430207002_image.png" alt="Certificate presentations">
+                        <div class="slider-caption">
+                            <h3>Celebrating Success</h3>
+                            <p>Recognizing workshop graduates and their transformative journey</p>
+                        </div>
+                    </div>
+
+                    <div class="slider-item">
+                        <img src="images/1769430826700_image.png" alt="MCJEH Digital Team">
+                        <div class="slider-caption">
+                            <h3>The MCJEH Family</h3>
+                            <p>Our passionate team dedicated to building brands and raising leaders</p>
+                        </div>
+                    </div>
+
+                    <div class="slider-item">
+                        <img src="images/1769430790912_image.png" alt="The Awakening Conference">
+                        <div class="slider-caption">
+                            <h3>The Awakening Conference 2025</h3>
+                            <p>Annual strategy conference bringing together entrepreneurs and digital professionals</p>
+                        </div>
+                    </div>
+
+                    <div class="slider-item">
+                        <img src="images/1769430797549_image.png" alt="Networking at conference">
+                        <div class="slider-caption">
+                            <h3>Networking & Collaboration</h3>
+                            <p>Building meaningful connections and partnerships across industries</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="slider-nav prev" onclick="moveSlider(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-nav next" onclick="moveSlider(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section - Photo Gallery Style -->
+    <section id="programs" class="programs">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Programs</span>
+                <h2>Training & Capacity Building</h2>
+                <p>Impact-driven workshops and programs that transform businesses, careers, and communities</p>
+            </div>
+
+            <!-- BRAND IT Program -->
+            <div class="program-gallery-item">
+                <div class="program-media-slider">
+                    <div class="media-track" id="branditTrack">
+                        <div class="media-slide">
+                            <img src="images/1769430175823_image.png" alt="BRAND IT Workshop with Uncle Mark">
+                        </div>
+                        <div class="media-slide">
+                            <img src="images/1769430200250_image.png" alt="BRAND IT attendees learning">
+                        </div>
+                        <div class="media-slide">
+                            <video autoplay muted loop playsinline>
+                                <source src="videos/brandit.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="media-slide">
+                            <img src="images/1769428582802_image.png" alt="BRAND IT Workshop flyer">
+                        </div>
+                    </div>
+                    <button class="media-nav prev" onclick="moveProgramSlider('brandit', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="media-nav next" onclick="moveProgramSlider('brandit', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="media-dots" id="branditDots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="program-info">
+                    <div class="program-badge">Workshop Series</div>
+                    <h3>BRAND IT</h3>
+                    <p class="program-description">Build a brand people understand, trust, and remember. This intensive workshop teaches you the fundamentals of brand strategy, positioning, and messaging that resonates with your target audience.</p>
+                    <div class="program-highlights">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Brand positioning frameworks and strategies</li>
+                            <li><i class="fas fa-check-circle"></i> Customer psychology & buying behavior</li>
+                            <li><i class="fas fa-check-circle"></i> Messaging & communication strategies</li>
+                            <li><i class="fas fa-check-circle"></i> Visual identity fundamentals</li>
+                            <li><i class="fas fa-check-circle"></i> Competitive differentiation techniques</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/2349081953680?text=I'm%20interested%20in%20BRAND%20IT%20workshop" class="program-btn">
+                        <i class="fab fa-whatsapp"></i> Join BRAND IT
+                    </a>
+                </div>
+            </div>
+
+            <!-- Marketing Magnet Program -->
+            <div class="program-gallery-item reverse">
+                <div class="program-media-slider">
+                    <div class="media-track" id="magnetTrack">
+                        <div class="media-slide">
+                            <img src="images/Marketing_Magnet.jpg" alt="Marketing Magnet Program">
+                        </div>
+                        <div class="media-slide">
+                            <img src="images/1769430183032_image.png" alt="Marketing training in action">
+                        </div>
+                        <div class="media-slide">
+                            <img src="images/1769430802113_image.png" alt="Engaged participants">
+                        </div>
+                    </div>
+                    <button class="media-nav prev" onclick="moveProgramSlider('magnet', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="media-nav next" onclick="moveProgramSlider('magnet', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="media-dots" id="magnetDots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="program-info">
+                    <div class="program-badge">Marketing Program</div>
+                    <h3>Marketing Magnet</h3>
+                    <p class="program-description">Attract and engage your ideal customers with magnetic marketing strategies that drive sustainable business growth. Learn proven techniques to turn prospects into loyal customers.</p>
+                    <div class="program-highlights">
+                        <h4>Program Features:</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Customer acquisition strategies</li>
+                            <li><i class="fas fa-check-circle"></i> Content marketing mastery</li>
+                            <li><i class="fas fa-check-circle"></i> Social media engagement tactics</li>
+                            <li><i class="fas fa-check-circle"></i> Lead generation systems</li>
+                            <li><i class="fas fa-check-circle"></i> Marketing automation tools</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/2349081953680?text=I'm%20interested%20in%20Marketing%20Magnet" class="program-btn">
+                        <i class="fab fa-whatsapp"></i> Join Marketing Magnet
+                    </a>
+                </div>
+            </div>
+
+            <!-- CONVERT IT Program -->
+            <div class="program-gallery-item">
+                <div class="program-media-slider">
+                    <div class="media-track" id="convertTrack">
+                        <div class="media-slide">
+                            <img src="images/1769430170509_image.png" alt="CONVERT IT Workshop">
+                        </div>
+                        <div class="media-slide">
+                            <img src="images/1769430188070_image.png" alt="Workshop participants">
+                        </div>
+                        <div class="media-slide">
+                            <img src="images/1769430812695_image.png" alt="Hands-on training">
+                        </div>
+                        <div class="media-slide">
+                            <img src="images/1769430797549_image.png" alt="Group learning">
+                        </div>
+                    </div>
+                    <button class="media-nav prev" onclick="moveProgramSlider('convert', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="media-nav next" onclick="moveProgramSlider('convert', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="media-dots" id="convertDots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="program-info">
+                    <div class="program-badge">Conversion Workshop</div>
+                    <h3>CONVERT IT</h3>
+                    <p class="program-description">Transform your audience into paying customers with conversion-focused advertising and sales optimization. Master the art and science of turning interest into revenue.</p>
+                    <div class="program-highlights">
+                        <h4>Core Modules:</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Conversion rate optimization techniques</li>
+                            <li><i class="fas fa-check-circle"></i> Facebook & Instagram advertising mastery</li>
+                            <li><i class="fas fa-check-circle"></i> Sales funnel architecture & design</li>
+                            <li><i class="fas fa-check-circle"></i> Campaign performance tracking & analytics</li>
+                            <li><i class="fas fa-check-circle"></i> ROI-focused marketing strategies</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/2349081953680?text=I'm%20interested%20in%20CONVERT%20IT" class="program-btn">
+                        <i class="fab fa-whatsapp"></i> Join CONVERT IT
+                    </a>
+                </div>
+            </div>
+
+            <!-- The Awakening Conference -->
+            <div class="program-gallery-item reverse">
+                <div class="program-media-slider">
+                    <div class="media-track" id="awakeningTrack">
+                        <div class="media-slide">
+                            <img src="images/1769430785574_image.png" alt="The Awakening Conference 2025">
+                        </div>
+                        <div class="media-slide">
+                            <video autoplay muted loop playsinline>
+                                <source src="videos/2.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="media-slide">
+                            <img src="images/1769430790912_image.png" alt="Conference networking">
+                        </div>
+                        <div class="media-slide">
+                            <img src="images/1769431453814_image.png" alt="Speaker session">
+                        </div>
+                    </div>
+                    <button class="media-nav prev" onclick="moveProgramSlider('awakening', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="media-nav next" onclick="moveProgramSlider('awakening', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="media-dots" id="awakeningDots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="program-info">
+                    <div class="program-badge">Annual Conference</div>
+                    <h3>The Awakening Conference</h3>
+                    <p class="program-description">Our flagship annual strategy conference bringing together entrepreneurs, professionals, and business leaders for digital transformation and exponential business growth.</p>
+                    <div class="program-highlights">
+                        <h4>Conference Highlights:</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Industry trends & future insights</li>
+                            <li><i class="fas fa-check-circle"></i> Strategic networking opportunities</li>
+                            <li><i class="fas fa-check-circle"></i> Business strategy masterclasses</li>
+                            <li><i class="fas fa-check-circle"></i> Digital transformation roadmaps</li>
+                            <li><i class="fas fa-check-circle"></i> Leadership development sessions</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/2349081953680?text=I'm%20interested%20in%20The%20Awakening%20Conference" class="program-btn">
+                        <i class="fab fa-whatsapp"></i> Register for Conference
+                    </a>
+                </div>
+            </div>
+
+            <!-- The Digital Lab -->
+            <div class="program-gallery-item">
+                <div class="program-media-slider">
+                    <div class="media-track" id="digitalTrack">
+                        <div class="media-slide">
+                            <img src="images/1769430807373_image.png" alt="Digital Lab training">
+                        </div>
+                        <div class="media-slide">
+                            <img src="images/1769430819001_image.png" alt="Lab participants">
+                        </div>
+                        <div class="media-slide">
+                            <img src="images/1769430826700_image.png" alt="Digital Lab team">
+                        </div>
+                    </div>
+                    <button class="media-nav prev" onclick="moveProgramSlider('digital', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="media-nav next" onclick="moveProgramSlider('digital', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="media-dots" id="digitalDots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="program-info">
+                    <div class="program-badge">Training Program</div>
+                    <h3>The Digital Lab</h3>
+                    <p class="program-description">Comprehensive training program for emerging digital marketing talents and aspiring professionals. Get hands-on experience with real projects and one-on-one mentorship.</p>
+                    <div class="program-highlights">
+                        <h4>Training Includes:</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Digital marketing fundamentals</li>
+                            <li><i class="fas fa-check-circle"></i> Practical skill development with real projects</li>
+                            <li><i class="fas fa-check-circle"></i> One-on-one mentorship from experts</li>
+                            <li><i class="fas fa-check-circle"></i> Industry certification upon completion</li>
+                            <li><i class="fas fa-check-circle"></i> Career guidance & job placement support</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/2349081953680?text=I'm%20interested%20in%20The%20Digital%20Lab" class="program-btn">
+                        <i class="fab fa-whatsapp"></i> Join The Digital Lab
+                    </a>
+                </div>
+            </div>
+
+            <!-- McJeh Teens -->
+            <div class="program-gallery-item reverse">
+                <div class="program-media-slider">
+                    <div class="media-track" id="teensTrack">
+                        <div class="media-slide">
+                            <img src="images/1769430195125_image.png" alt="McJeh Teens participants">
+                        </div>
+                        <div class="media-slide">
+                            <img src="images/1769430207002_image.png" alt="Teens with certificates">
+                        </div>
+                        <div class="media-slide">
+                            <img src="images/1769431510370_image.png" alt="Youth empowerment">
+                        </div>
+                    </div>
+                    <button class="media-nav prev" onclick="moveProgramSlider('teens', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="media-nav next" onclick="moveProgramSlider('teens', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="media-dots" id="teensDots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="program-info">
+                    <div class="program-badge">Youth Program</div>
+                    <h3>McJeh Teens</h3>
+                    <p class="program-description">Equipping teenagers with practical digital and creative skills to shape the next generation of leaders and innovators. Age-appropriate training in digital creativity and entrepreneurship.</p>
+                    <div class="program-highlights">
+                        <h4>Teen Curriculum:</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Digital creativity & graphic design</li>
+                            <li><i class="fas fa-check-circle"></i> Social media content creation</li>
+                            <li><i class="fas fa-check-circle"></i> Video editing & production skills</li>
+                            <li><i class="fas fa-check-circle"></i> Youth entrepreneurship fundamentals</li>
+                            <li><i class="fas fa-check-circle"></i> Future-ready digital skillsets</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/2349081953680?text=I'm%20interested%20in%20McJeh%20Teens" class="program-btn">
+                        <i class="fab fa-whatsapp"></i> Enroll in McJeh Teens
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshop Registration Section -->
+    <section id="workshop" class="workshop">
+        <div class="container">
+            <div class="workshop-content">
+                <div class="workshop-label">The Digital Lab Workshop 2026</div>
+                
+                <!-- CEO Image -->
+                <div style="margin-bottom: 2rem;">
+                    <img src="images/1769430175823_image.png" alt="Uncle Mark - CEO presenting BRAND IT" style="width: 100%; max-width: 500px; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 5px solid white;">
+                </div>
+                
+                <div class="workshop-brand">
+                    <h2>
+                        <span class="white-text">BRAND</span><span class="blue-box">IT</span>
+                    </h2>
+                </div>
+                
+                <div class="workshop-cohort">Cohort 2 (Owerri)</div>
+                
+                <div class="workshop-tagline">
+                    Build a Brand People Understand, Trust & Remember
+                </div>
+                
+                <p class="workshop-description">
+                    If people don't clearly understand what you do or why they should choose you, this intensive workshop is designed for you. Join Uncle Mark for a transformative, hands-on session that will revolutionize how you present your business and connect with your customers.
+                </p>
+                
+                <a href="https://wa.me/2349081953680?text=Hi,%20I%20want%20to%20register%20for%20the%20BRAND%20IT%20Workshop%20-%20Cohort%202" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i> Reserve Your Spot Now
+                </a>
+            </div>
+
+            <div class="workshop-details-card">
+                <div class="detail-row">
+                    <span class="label">THUR</span>
+                    <span class="value">26 | <span class="label">FEB</span> 2026</span>
+                </div>
+                <div class="detail-row">
+                    <span class="value">10AM</span>
+                    <span style="font-style: italic; color: var(--text-gray); font-weight: 700;">(PROMPT)</span>
+                </div>
+                <div class="detail-row">
+                    <span class="value" style="text-transform: uppercase; font-size: 1.3rem;">Owerri, Imo State</span>
+                </div>
+
+                <div class="pricing-section">
+                    <p class="early-bird">Early Bird Pricing (Limited Slots)</p>
+                    <div class="price">₦75,000</div>
+                    
+                    <div class="whatsapp-box">
+                        <h4>Register via WhatsApp</h4>
+                        <div class="label">Contact Now:</div>
+                        <a href="https://wa.me/2349081953680?text=Hi,%20I%20want%20to%20register%20for%20the%20BRAND%20IT%20Workshop" style="text-decoration: none; color: var(--dark);">
+                            <div class="whatsapp-number">
+                                <i class="fab fa-whatsapp"></i> 09081953680
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>MCJEH DIGITAL</h3>
+                <div class="footer-tagline">Marketing Agency</div>
+                <p>Strategy-driven digital marketing and brand development agency building brands, raising leaders, and driving meaningful digital impact across Africa. Since 2018, we've been committed to helping businesses gain clarity, structure, and sustainable growth.</p>
+                
+                <div class="footer-social">
+                    <a href="https://wa.me/2349081953680" class="whatsapp" target="_blank" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/mcjehdigital" class="instagram" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@mcjehdigital" class="tiktok" target="_blank" title="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://x.com/McjehDigital" class="twitter" target="_blank" title="X (Twitter)">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Our Programs</h4>
+                <ul>
+                    <li><a href="#programs">BRAND IT</a></li>
+                    <li><a href="#programs">Marketing Magnet</a></li>
+                    <li><a href="#programs">CONVERT IT</a></li>
+                    <li><a href="#programs">The Awakening</a></li>
+                    <li><a href="#programs">Digital Lab</a></li>
+                    <li><a href="#programs">McJeh Teens</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#programs">Our Programs</a></li>
+                    <li><a href="#workshop">Upcoming Workshop</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Get in Touch</h4>
+                <ul>
+                    <li><a href="https://wa.me/2349081953680"><i class="fab fa-whatsapp"></i> 09081953680</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#4e272028210e232d242b262a2729273a2f22602d2123"><i class="fas fa-envelope"></i> <span class="__cf_email__" data-cfemail="0960676f6649646a636c616d606e607d6865276a6664">[email&#160;protected]</span></a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Owerri, Imo State</a></li>
+                    <li><a href="https://mcjehdigital.com"><i class="fas fa-globe"></i> www.mcjehdigital.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 MCJEH Digital Marketing Agency. All rights reserved. | We Promote, You Grow | Strategy Before Tactics</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Hero Carousel Auto-Slide
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlideIndex = n;
+            if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+            if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+            
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function currentSlide(n) {
+            showSlide(n);
+        }
+
+        function autoSlide() {
+            currentSlideIndex++;
+            showSlide(currentSlideIndex);
+        }
+
+        // Auto-advance carousel every 5 seconds
+        setInterval(autoSlide, 5000);
+
+        // Image Gallery Slider
+        let sliderPosition = 0;
+        const sliderTrack = document.getElementById('sliderTrack');
+        const sliderItems = document.querySelectorAll('.slider-item');
+
+        function moveSlider(direction) {
+            sliderPosition += direction;
+            if (sliderPosition < 0) sliderPosition = sliderItems.length - 1;
+            if (sliderPosition >= sliderItems.length) sliderPosition = 0;
+            
+            sliderTrack.style.transform = `translateX(-${sliderPosition * 100}%)`;
+        }
+
+        // Auto-advance gallery slider every 6 seconds
+        setInterval(() => moveSlider(1), 6000);
+
+        // Animated Counter for Stats
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            if (isNaN(target)) return;
+            
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.stat-number[data-target]').forEach(animateCounter);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) statsObserver.observe(statsSection);
+
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animations to elements
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.program-card, .highlight-box, .video-card').forEach((element) => {            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'all 0.6s ease-out';
+            animateOnScroll.observe(element);
+        });
+
+        // Program Gallery Sliders
+        const programSliders = {};
+
+        function initProgramSlider(programId) {
+            programSliders[programId] = {
+                position: 0,
+                track: document.getElementById(programId + 'Track'),
+                dots: document.querySelectorAll(`#${programId}Dots .program-dot`),
+                slides: document.querySelectorAll(`#${programId}Track .program-media-slide`)
+            };
+        }
+
+        function moveProgramSlider(programId, direction) {
+            const slider = programSliders[programId];
+            if (!slider || !slider.track) return;
+            
+            slider.position += direction;
+            
+            if (slider.position < 0) {
+                slider.position = slider.slides.length - 1;
+            }
+            if (slider.position >= slider.slides.length) {
+                slider.position = 0;
+            }
+            
+            slider.track.style.transform = `translateX(-${slider.position * 100}%)`;
+            
+            // Update dots
+            slider.dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === slider.position);
+            });
+        }
+
+        // Initialize all program sliders
+        window.addEventListener('DOMContentLoaded', () => {
+            ['brandit', 'magnet', 'convert', 'awakening', 'digital', 'teens'].forEach(initProgramSlider);
+            
+            // Auto-advance program sliders every 7 seconds
+            setInterval(() => {
+                ['brandit', 'magnet', 'convert', 'awakening', 'digital', 'teens'].forEach(id => {
+                    moveProgramSlider(id, 1);
+                });
+            }, 7000);
+        });
+    </script>
+</body>
+</html>
