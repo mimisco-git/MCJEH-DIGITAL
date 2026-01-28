@@ -171,9 +171,15 @@
             align-items: center;
             justify-content: center;
             z-index: 10002;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-            opacity: 1;
-            visibility: visible;
+            animation: fadeOutLoader 0.5s ease 1.5s forwards;
+        }
+
+        @keyframes fadeOutLoader {
+            to {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
         }
 
         .loader-wrapper.fade-out {
@@ -541,14 +547,44 @@
         /* ============ WORKFLOW SECTION (DOTT STYLE) ============ */
         .workflow {
             padding: 80px 5%;
-            background: rgba(0, 82, 255, 0.02);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             position: relative;
+            overflow: hidden;
+        }
+
+        .workflow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -25%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0,82,255,0.08) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        .workflow::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -25%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(103,58,183,0.08) 0%, transparent 70%);
+            animation: pulse 12s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
         }
 
         .workflow-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 10;
         }
 
         .workflow h2 {
@@ -557,6 +593,26 @@
             font-weight: 800;
             color: var(--dark);
             margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .workflow h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
+            animation: expandLine 1.5s ease-out forwards;
+        }
+
+        @keyframes expandLine {
+            from { width: 0; }
+            to { width: 120px; }
         }
 
         .workflow-text {
@@ -564,11 +620,15 @@
             line-height: 1.8;
             color: var(--gray);
             margin-bottom: 3rem;
+            position: relative;
+            z-index: 10;
         }
 
         .workflow-animation-container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 10;
         }
 
         .workflow-visual {
@@ -588,15 +648,55 @@
         .workflow-step {
             text-align: center;
             padding: 2rem;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 20px;
-            transition: all 0.3s;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .workflow-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,82,255,0.1), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .workflow-step:hover::before {
+            left: 100%;
+        }
+
+        .workflow-step::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(0,82,255,0.05) 0%, transparent 70%);
+            transition: all 0.6s ease;
+        }
+
+        .workflow-step:hover::after {
+            top: -30%;
+            right: -30%;
+            width: 180px;
+            height: 180px;
         }
 
         .workflow-step:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 82, 255, 0.2);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 60px rgba(0, 82, 255, 0.25);
+            border-color: var(--primary);
         }
 
         .workflow-step-number {
@@ -612,17 +712,39 @@
             font-weight: 800;
             margin: 0 auto 1rem;
             box-shadow: 0 10px 30px rgba(0, 82, 255, 0.3);
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .workflow-step:hover .workflow-step-number {
+            transform: rotate(360deg) scale(1.15);
+            box-shadow: 0 15px 40px rgba(0, 82, 255, 0.4);
         }
 
         .workflow-step h4 {
             font-size: 1.2rem;
             color: var(--dark);
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .workflow-step:hover h4 {
+            color: var(--primary);
         }
 
         .workflow-step p {
             color: var(--gray);
             font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .workflow-step:hover p {
+            color: var(--dark);
         }
 
         /* ============ SERVICES SECTION (MODERN GLASS) ============ */
@@ -1059,7 +1181,23 @@
             }
         }
 
+        /* ============ RESPONSIVE DESIGN - PERFECT MOBILE ============ */
+        @media (max-width: 1024px) {
+            .event-top-section {
+                gap: 2rem;
+            }
+
+            .workflow-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
+            /* Navigation */
             .nav-links {
                 position: fixed;
                 top: 70px;
@@ -1071,6 +1209,7 @@
                 padding: 2rem;
                 transition: left 0.3s;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                z-index: 999;
             }
 
             .nav-links.active {
@@ -1081,38 +1220,32 @@
                 display: flex;
             }
 
+            /* Hero */
+            .hero {
+                min-height: 80vh;
+                padding: 100px 1.5rem 4rem;
+            }
+
             .hero h1 {
                 font-size: 2rem;
             }
 
-            .countdown-item {
-                padding: 1.5rem 1rem;
-            }
-
-            .countdown-number {
-                font-size: 2rem;
-            }
-
-            .workflow h2 {
-                font-size: 2rem;
-            }
-
-            .workflow-text {
+            .hero p {
                 font-size: 1rem;
             }
 
-            .workflow-steps {
-                grid-template-columns: 1fr;
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
             }
 
-            .services-grid {
-                grid-template-columns: 1fr;
+            .hero-buttons .btn {
+                width: 100%;
+                justify-content: center;
             }
 
-            .testimonial-card {
-                padding: 2rem;
-            }
-
+            /* Event Section - Mobile Perfect */
             .event-countdown-section {
                 padding: 3rem 1.5rem;
             }
@@ -1125,19 +1258,152 @@
 
             .event-banner {
                 order: -1;
+                max-width: 100%;
+            }
+
+            .event-info {
+                padding: 0;
+            }
+
+            .event-badge {
+                font-size: 0.8rem;
+                padding: 0.4rem 1rem;
             }
 
             .event-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
+            .event-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .event-detail-item {
+                font-size: 0.95rem;
+            }
+
+            .event-detail-item i {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+
+            .apply-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 1.1rem 2rem;
+                font-size: 1rem;
+            }
+
+            /* Countdown - Mobile 2x2 Grid */
             .countdown-timer {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
+                max-width: 100%;
             }
 
+            .countdown-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .countdown-number {
+                font-size: 2.2rem;
+            }
+
+            .countdown-label {
+                font-size: 0.8rem;
+            }
+
+            /* Workflow - Mobile Optimized */
+            .workflow {
+                padding: 4rem 1.5rem;
+            }
+
+            .workflow h2 {
+                font-size: 2rem;
+            }
+
+            .workflow-text {
+                font-size: 1rem;
+            }
+
+            .workflow-steps {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .workflow-step {
+                padding: 2rem 1.5rem;
+            }
+
+            .workflow-step-number {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+
+            .workflow-step h4 {
+                font-size: 1.1rem;
+            }
+
+            .workflow-step p {
+                font-size: 0.9rem;
+            }
+
+            /* Services - Mobile Single Column */
+            .services {
+                padding: 4rem 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            /* Testimonials - Mobile */
+            .testimonials {
+                padding: 4rem 1.5rem;
+            }
+
+            .testimonial-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .testimonial-avatar {
+                width: 50px;
+                height: 50px;
+            }
+
+            .testimonial-name {
+                font-size: 1rem;
+            }
+
+            .testimonial-role {
+                font-size: 0.85rem;
+            }
+
+            .testimonial-text {
+                font-size: 0.95rem;
+            }
+
+            /* Event Modal - Mobile */
             .event-modal-content {
                 max-width: 95%;
+                margin: 1rem;
+            }
+
+            .modal-flyer {
+                max-height: 60vh;
             }
 
             .modal-actions {
@@ -1148,23 +1414,55 @@
                 font-size: 1.2rem;
             }
 
+            .modal-subtitle {
+                font-size: 0.95rem;
+            }
+
             .modal-btn {
                 padding: 0.9rem 2rem;
                 font-size: 1rem;
             }
+
+            /* Footer - Mobile */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-section h3 {
+                text-align: center;
+            }
+
+            .footer-section ul {
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
+            /* Extra Small Mobile */
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .event-title {
+                font-size: 1.5rem;
+            }
+
             .countdown-timer {
-                gap: 1rem;
+                gap: 0.8rem;
             }
 
             .countdown-item {
-                padding: 1rem 0.5rem;
+                padding: 1.2rem 0.8rem;
             }
 
             .countdown-number {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
 
             .countdown-label {
@@ -1172,13 +1470,168 @@
             }
 
             .event-detail-item {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
+                gap: 0.7rem;
             }
 
             .apply-btn {
-                padding: 1rem 2rem;
-                font-size: 1rem;
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
             }
+
+            .workflow-step {
+                padding: 1.5rem 1rem;
+            }
+
+            .workflow-step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .service-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .modal-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* ============ PREMIUM SCROLL ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-10deg) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0) scale(1);
+            }
+        }
+
+        /* Apply animations to elements */
+        .service-card {
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .testimonial-card {
+            animation: scaleIn 0.5s ease-out backwards;
+        }
+
+        .workflow-step {
+            animation: fadeInUp 0.7s ease-out backwards;
+        }
+
+        .workflow-step:nth-child(1) { animation-delay: 0.1s; }
+        .workflow-step:nth-child(2) { animation-delay: 0.2s; }
+        .workflow-step:nth-child(3) { animation-delay: 0.3s; }
+        .workflow-step:nth-child(4) { animation-delay: 0.4s; }
+        .workflow-step:nth-child(5) { animation-delay: 0.5s; }
+        .workflow-step:nth-child(6) { animation-delay: 0.6s; }
+
+        /* ============ ENHANCED HOVER EFFECTS ============ */
+        .service-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,82,255,0.08), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-icon {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .testimonial-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0,82,255,0.05) 0%, transparent 70%);
+            transition: all 0.6s ease;
+        }
+
+        .testimonial-card:hover::after {
+            top: -30%;
+            right: -30%;
+            width: 250px;
+            height: 250px;
         }
     </style>
 </head>
@@ -1688,117 +2141,272 @@
         </div>
     </footer>
 
-    <!-- Swiper JS -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
     <!-- Scripts -->
     <script>
+        // ==================== MCJEH DIGITAL PREMIUM SCRIPT ====================
+        
         // Close modal function
         function closeModal() {
-            console.log('Closing modal...');
-            var modal = document.getElementById('eventModal');
-            modal.classList.add('hidden');
-            modal.style.opacity = '0';
-            modal.style.visibility = 'hidden';
-            sessionStorage.setItem('modalShown', 'true');
-            console.log('Modal closed and session flag set');
+            const modal = document.getElementById('eventModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.style.opacity = '0';
+                modal.style.visibility = 'hidden';
+                sessionStorage.setItem('modalShown', 'true');
+            }
         }
 
-        // Close modal when clicking outside
-        document.getElementById('eventModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        // Page load sequence
-        window.onload = function() {
-            console.log('=== PAGE LOADED ===');
+        // Main initialization when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 MCJEH Digital Loading...');
             
-            // Step 1: Hide loader after 1.5s
+            // ========== LOADER SEQUENCE ==========
             setTimeout(function() {
-                console.log('Hiding loader...');
-                document.getElementById('loader').style.display = 'none';
+                const loader = document.getElementById('loader');
+                if (loader) {
+                    loader.style.opacity = '0';
+                    loader.style.visibility = 'hidden';
+                    setTimeout(function() {
+                        loader.style.display = 'none';
+                        console.log('✅ Loader hidden');
+                    }, 500);
+                }
             }, 1500);
             
-            // Step 2: Show popup after 2s (if not shown before)
+            // ========== MODAL POPUP ==========
             setTimeout(function() {
-                var modalShown = sessionStorage.getItem('modalShown');
-                console.log('Modal shown before?', modalShown);
-                
-                if (!modalShown) {
-                    console.log('Showing popup now!');
-                    var modal = document.getElementById('eventModal');
-                    modal.classList.remove('hidden');
-                    modal.style.display = 'flex';
-                    modal.style.opacity = '1';
-                    modal.style.visibility = 'visible';
-                } else {
-                    console.log('Modal already shown in this session');
+                if (!sessionStorage.getItem('modalShown')) {
+                    const modal = document.getElementById('eventModal');
+                    if (modal) {
+                        modal.classList.remove('hidden');
+                        modal.style.display = 'flex';
+                        modal.style.opacity = '1';
+                        modal.style.visibility = 'visible';
+                        console.log('✅ Modal shown');
+                    }
                 }
             }, 2000);
-        };
 
-        // Mobile Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+            // ========== MODAL CLOSE EVENTS ==========
+            const eventModal = document.getElementById('eventModal');
+            if (eventModal) {
+                eventModal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal();
+                    }
+                });
+            }
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            // ========== COUNTDOWN TIMER ==========
+            const countdownDate = new Date('February 26, 2026 10:00:00').getTime();
             
-            const spans = menuToggle.querySelectorAll('span');
-            spans[0].style.transform = navLinks.classList.contains('active') ? 'rotate(45deg) translate(5px, 5px)' : '';
-            spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
-            spans[2].style.transform = navLinks.classList.contains('active') ? 'rotate(-45deg) translate(7px, -6px)' : '';
-        });
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const spans = menuToggle.querySelectorAll('span');
-                spans[0].style.transform = '';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = '';
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                const daysEl = document.getElementById('days');
+                const hoursEl = document.getElementById('hours');
+                const minutesEl = document.getElementById('minutes');
+                const secondsEl = document.getElementById('seconds');
+
+                if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+                if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+                if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+                if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    if (daysEl) daysEl.textContent = '00';
+                    if (hoursEl) hoursEl.textContent = '00';
+                    if (minutesEl) minutesEl.textContent = '00';
+                    if (secondsEl) secondsEl.textContent = '00';
+                }
+            }
+
+            // Initial update and start interval
+            updateCountdown();
+            const countdownInterval = setInterval(updateCountdown, 1000);
+            console.log('✅ Countdown started');
+
+            // ========== MOBILE MENU ==========
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = navLinks.classList.contains('active') ? 'rotate(45deg) translate(5px, 5px)' : '';
+                    spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
+                    spans[2].style.transform = navLinks.classList.contains('active') ? 'rotate(-45deg) translate(7px, -6px)' : '';
+                });
+
+                // Close menu when clicking a link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        const spans = menuToggle.querySelectorAll('span');
+                        spans[0].style.transform = '';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = '';
+                    });
+                });
+            }
+
+            // ========== SCROLLED NAV ==========
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('nav');
+                if (nav) {
+                    if (window.scrollY > 50) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+                }
             });
+
+            // ========== SMOOTH SCROLL ==========
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // ========== PREMIUM SCROLL ANIMATIONS ==========
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            const animatedElements = document.querySelectorAll(
+                '.service-card, .testimonial-card, .workflow-step, .countdown-item, .event-detail-item'
+            );
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                observer.observe(el);
+            });
+
+            console.log('✅ Scroll animations initialized');
+
+            // ========== PREMIUM HOVER EFFECTS ==========
+            // Workflow steps
+            document.querySelectorAll('.workflow-step').forEach((step) => {
+                step.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) scale(1.03)';
+                });
+                
+                step.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('animated')) {
+                        this.style.transform = 'translateY(30px)';
+                    } else {
+                        this.style.transform = 'translateY(0) scale(1)';
+                    }
+                });
+            });
+
+            // Service cards
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('animated')) {
+                        this.style.transform = 'translateY(30px)';
+                    } else {
+                        this.style.transform = 'translateY(0) scale(1)';
+                    }
+                });
+            });
+
+            console.log('✅ Premium hover effects active');
+
+            // ========== SWIPER INITIALIZATION ==========
+            setTimeout(function() {
+                // Results Swiper
+                if (typeof Swiper !== 'undefined' && document.querySelector('.results-swiper')) {
+                    new Swiper('.results-swiper', {
+                        slidesPerView: 1,
+                        spaceBetween: 30,
+                        loop: true,
+                        autoplay: {
+                            delay: 4000,
+                            disableOnInteraction: false,
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                        breakpoints: {
+                            768: { slidesPerView: 2 },
+                            1024: { slidesPerView: 3 }
+                        }
+                    });
+                    console.log('✅ Results Swiper initialized');
+                }
+
+                // Testimonials Swiper
+                if (typeof Swiper !== 'undefined' && document.querySelector('.testimonials-swiper')) {
+                    new Swiper('.testimonials-swiper', {
+                        slidesPerView: 1,
+                        spaceBetween: 30,
+                        loop: true,
+                        autoplay: {
+                            delay: 5000,
+                            disableOnInteraction: false,
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                        breakpoints: {
+                            768: { slidesPerView: 2 },
+                            1024: { slidesPerView: 3 }
+                        }
+                    });
+                    console.log('✅ Testimonials Swiper initialized');
+                }
+            }, 100);
+
+            console.log('🎉 MCJEH Digital Premium Website Loaded!');
         });
 
-        // Scrolled Nav
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // Countdown Timer
-        const countdownDate = new Date('February 26, 2026 10:00:00').getTime();
-
-        const countdown = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-
-            if (distance < 0) {
-                clearInterval(countdown);
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-            }
-        }, 1000);
-
-        // Video Play Function
+        // ========== VIDEO PLAY FUNCTION ==========
         function playVideo(overlay) {
             const videoWrapper = overlay.parentElement;
             const video = videoWrapper.querySelector('video');
@@ -1815,272 +2423,19 @@
             }
         }
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // ========== BACKUP LOADER HIDE ==========
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            setTimeout(function() {
+                const loader = document.getElementById('loader');
+                if (loader && loader.style.display !== 'none') {
+                    loader.style.opacity = '0';
+                    loader.style.visibility = 'hidden';
+                    setTimeout(function() {
+                        loader.style.display = 'none';
+                    }, 500);
                 }
-            });
-        });
-
-        // Initialize Results Swiper
-        const resultsSwiper = new Swiper('.results-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                },
-                1024: {
-                    slidesPerView: 3,
-                }
-            }
-        });
-
-        // Initialize Testimonials Swiper
-        const testimonialsSwiper = new Swiper('.testimonials-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                },
-                1024: {
-                    slidesPerView: 3,
-                }
-            }
-        });
-
-        // Intersection Observer for Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.service-card, .event-card, .testimonial-card, .workflow-step').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
-
-        // Close modal when clicking outside
-        document.getElementById('eventModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        // Mobile Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            
-            // Animate menu toggle
-            const spans = menuToggle.querySelectorAll('span');
-            spans[0].style.transform = navLinks.classList.contains('active') ? 'rotate(45deg) translate(5px, 5px)' : '';
-            spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
-            spans[2].style.transform = navLinks.classList.contains('active') ? 'rotate(-45deg) translate(7px, -6px)' : '';
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const spans = menuToggle.querySelectorAll('span');
-                spans[0].style.transform = '';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = '';
-            });
-        });
-
-        // Scrolled Nav
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // Countdown Timer - Set to February 26, 2026
-        const countdownDate = new Date('February 26, 2026 10:00:00').getTime();
-
-        const countdown = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-
-            if (distance < 0) {
-                clearInterval(countdown);
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-            }
-        }, 1000);
-
-        // Video Play Function
-        function playVideo(overlay) {
-            const videoWrapper = overlay.parentElement;
-            const video = videoWrapper.querySelector('video');
-            
-            if (video) {
-                if (video.paused) {
-                    video.play();
-                    overlay.style.opacity = '0';
-                    video.controls = true;
-                } else {
-                    video.pause();
-                    overlay.style.opacity = '1';
-                }
-            }
+            }, 100);
         }
-
-        // Initialize Results Swiper
-        const resultsSwiper = new Swiper('.results-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                },
-                1024: {
-                    slidesPerView: 3,
-                }
-            }
-        });
-
-        // Initialize Testimonials Swiper
-        const testimonialsSwiper = new Swiper('.testimonials-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                },
-                1024: {
-                    slidesPerView: 3,
-                }
-            }
-        });
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer for Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all animated elements
-        document.querySelectorAll('.service-card, .event-card, .testimonial-card, .workflow-step').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
     </script>
 
     <!-- Swiper JS -->
