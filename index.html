@@ -50,15 +50,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10000;
-            opacity: 1;
-            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 10001;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
             padding: 1rem;
         }
 
@@ -166,55 +165,50 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            background: var(--dark);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: 10001;
-            transition: opacity 0.5s, visibility 0.5s;
+            z-index: 10002;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            opacity: 1;
+            visibility: visible;
         }
 
         .loader-wrapper.fade-out {
             opacity: 0;
             visibility: hidden;
+            pointer-events: none;
         }
 
         .loader {
-            width: 100px;
-            height: 100px;
-            border: 5px solid transparent;
-            border-top-color: var(--white);
-            border-right-color: var(--white);
+            width: 80px;
+            height: 80px;
+            border: 4px solid transparent;
+            border-top-color: var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin-bottom: 2rem;
         }
 
         .loader-text {
             color: var(--white);
-            font-weight: 900;
-            font-size: 2.5rem;
-            letter-spacing: 3px;
-            font-family: 'Poppins', sans-serif;
-            animation: pulse 2s ease-in-out infinite;
+            margin-top: 2rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 5px;
         }
 
         .loader-tagline {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
-            margin-top: 1rem;
-            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
             font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 2px;
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
         }
 
         /* ============ GLASS NAVIGATION ============ */
@@ -303,7 +297,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: url('hero-background.jpg') center center/cover no-repeat;
+            background-color: #667eea;
+            background-image: url('hero-background.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
             position: relative;
             overflow: hidden;
             padding-top: 80px;
@@ -1173,7 +1171,7 @@
 </head>
 <body>
     <!-- Event Popup Modal -->
-    <div class="event-modal" id="eventModal">
+    <div class="event-modal hidden" id="eventModal">
         <div class="event-modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
             <img src="1769606294276_image.png" alt="BRAND IT Cohort 2 Event Flyer" class="modal-flyer">
@@ -1189,7 +1187,7 @@
     </div>
 
     <!-- Loader -->
-    <div class="loader-wrapper">
+    <div class="loader-wrapper" id="loader">
         <div class="loader"></div>
         <div class="loader-text">MCJEH DIGITAL</div>
         <div class="loader-tagline">#WePromoteYouGrow</div>
@@ -1252,7 +1250,7 @@
                 </div>
                 <a href="https://wa.me/2349081953680?text=Hi%20MCJEH%20Digital,%20I%20want%20to%20register%20for%20BRAND%20IT%20Cohort%202%20(Owerri)" class="apply-btn" target="_blank">
                     <i class="fab fa-whatsapp"></i>
-                    Register Now via WhatsApp
+                    Register Now
                 </a>
             </div>
             
@@ -1678,29 +1676,218 @@
 
     <!-- Scripts -->
     <script>
-        // Event Modal Management
+        // Close modal function
         function closeModal() {
-            document.getElementById('eventModal').classList.add('hidden');
+            console.log('Closing modal...');
+            var modal = document.getElementById('eventModal');
+            modal.classList.add('hidden');
+            modal.style.opacity = '0';
+            modal.style.visibility = 'hidden';
             sessionStorage.setItem('modalShown', 'true');
+            console.log('Modal closed and session flag set');
         }
 
-        // Show modal after loader (only once per session)
-        window.addEventListener('load', () => {
-            const loader = document.querySelector('.loader-wrapper');
-            const modalShown = sessionStorage.getItem('modalShown');
+        // Close modal when clicking outside
+        document.getElementById('eventModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Page load sequence
+        window.onload = function() {
+            console.log('=== PAGE LOADED ===');
             
-            // Hide loader after 2 seconds
-            setTimeout(() => {
-                loader.classList.add('fade-out');
+            // Step 1: Hide loader after 1.5s
+            setTimeout(function() {
+                console.log('Hiding loader...');
+                document.getElementById('loader').style.display = 'none';
+            }, 1500);
+            
+            // Step 2: Show popup after 2s (if not shown before)
+            setTimeout(function() {
+                var modalShown = sessionStorage.getItem('modalShown');
+                console.log('Modal shown before?', modalShown);
                 
-                // Show event modal immediately after loader (if not shown this session)
                 if (!modalShown) {
-                    setTimeout(() => {
-                        document.getElementById('eventModal').classList.remove('hidden');
-                    }, 500); // Small delay for smooth transition
+                    console.log('Showing popup now!');
+                    var modal = document.getElementById('eventModal');
+                    modal.classList.remove('hidden');
+                    modal.style.display = 'flex';
+                    modal.style.opacity = '1';
+                    modal.style.visibility = 'visible';
+                } else {
+                    console.log('Modal already shown in this session');
                 }
             }, 2000);
+        };
+
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = navLinks.classList.contains('active') ? 'rotate(45deg) translate(5px, 5px)' : '';
+            spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
+            spans[2].style.transform = navLinks.classList.contains('active') ? 'rotate(-45deg) translate(7px, -6px)' : '';
         });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].style.transform = '';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = '';
+            });
+        });
+
+        // Scrolled Nav
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Countdown Timer
+        const countdownDate = new Date('February 26, 2026 10:00:00').getTime();
+
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }, 1000);
+
+        // Video Play Function
+        function playVideo(overlay) {
+            const videoWrapper = overlay.parentElement;
+            const video = videoWrapper.querySelector('video');
+            
+            if (video) {
+                if (video.paused) {
+                    video.play();
+                    overlay.style.opacity = '0';
+                    video.controls = true;
+                } else {
+                    video.pause();
+                    overlay.style.opacity = '1';
+                }
+            }
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize Results Swiper
+        const resultsSwiper = new Swiper('.results-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+
+        // Initialize Testimonials Swiper
+        const testimonialsSwiper = new Swiper('.testimonials-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .event-card, .testimonial-card, .workflow-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 
         // Close modal when clicking outside
         document.getElementById('eventModal').addEventListener('click', function(e) {
