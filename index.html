@@ -299,7 +299,7 @@
             justify-content: center;
             background-color: #667eea;
             background-image: url('hero-background.jpg');
-            background-position: center;
+            background-position: center top;
             background-size: cover;
             background-repeat: no-repeat;
             position: relative;
@@ -381,12 +381,17 @@
         .event-countdown-container {
             max-width: 1400px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
             position: relative;
             z-index: 2;
+        }
+
+        /* Top Section: Image + Info side by side */
+        .event-top-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3rem;
         }
 
         .event-info {
@@ -475,15 +480,15 @@
         }
 
         .countdown-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            width: 100%;
         }
 
         .countdown-timer {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .countdown-item {
@@ -520,19 +525,17 @@
         }
 
         .event-banner {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            width: 100%;
             border-radius: 20px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         .event-banner img {
             width: 100%;
-            max-width: 500px;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            height: auto;
+            display: block;
+            border-radius: 20px;
         }
 
         /* ============ WORKFLOW SECTION (DOTT STYLE) ============ */
@@ -1114,6 +1117,16 @@
                 padding: 3rem 1.5rem;
             }
 
+            .event-top-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .event-banner {
+                order: -1;
+            }
+
             .event-title {
                 font-size: 2rem;
             }
@@ -1226,34 +1239,42 @@
     <!-- Event Countdown Section -->
     <section id="event" class="event-countdown-section">
         <div class="event-countdown-container">
-            <div class="event-info">
-                <div class="event-badge">📅 THE DIGITAL LAB WORKSHOP 2026</div>
-                <h2 class="event-title">BRAND <span>IT</span> Cohort 2 (Owerri)</h2>
-                <p class="event-subtitle">Build a Brand People Understand, Trust & Remember</p>
-                <div class="event-details">
-                    <div class="event-detail-item">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Thursday, February 26, 2026</span>
-                    </div>
-                    <div class="event-detail-item">
-                        <i class="fas fa-clock"></i>
-                        <span>10:00 AM (Prompt)</span>
-                    </div>
-                    <div class="event-detail-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Owerri, Imo State, Nigeria</span>
-                    </div>
-                    <div class="event-detail-item">
-                        <i class="fas fa-tag"></i>
-                        <span>Early Bird Fee: ₦75,000 (Limited Slots)</span>
-                    </div>
+            <!-- Top Section: Image + Info side by side -->
+            <div class="event-top-section">
+                <div class="event-banner">
+                    <img src="1769606294276_image.png" alt="BRAND IT Cohort 2 Flyer">
                 </div>
-                <a href="https://wa.me/2349081953680?text=Hi%20MCJEH%20Digital,%20I%20want%20to%20register%20for%20BRAND%20IT%20Cohort%202%20(Owerri)" class="apply-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    Register Now
-                </a>
+                
+                <div class="event-info">
+                    <div class="event-badge">📅 THE DIGITAL LAB WORKSHOP 2026</div>
+                    <h2 class="event-title">BRAND <span>IT</span> Cohort 2 (Owerri)</h2>
+                    <p class="event-subtitle">Build a Brand People Understand, Trust & Remember</p>
+                    <div class="event-details">
+                        <div class="event-detail-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Thursday, February 26, 2026</span>
+                        </div>
+                        <div class="event-detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>10:00 AM (Prompt)</span>
+                        </div>
+                        <div class="event-detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Owerri, Imo State, Nigeria</span>
+                        </div>
+                        <div class="event-detail-item">
+                            <i class="fas fa-tag"></i>
+                            <span>Early Bird Fee: ₦75,000 (Limited Slots)</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/2349081953680?text=Hi%20MCJEH%20Digital,%20I%20want%20to%20register%20for%20BRAND%20IT%20Cohort%202%20(Owerri)" class="apply-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Register Now
+                    </a>
+                </div>
             </div>
             
+            <!-- Bottom Section: Countdown Timer -->
             <div class="countdown-wrapper">
                 <div class="countdown-timer">
                     <div class="countdown-item">
@@ -1272,10 +1293,6 @@
                         <span class="countdown-number" id="seconds">00</span>
                         <span class="countdown-label">Seconds</span>
                     </div>
-                </div>
-                
-                <div class="event-banner">
-                    <img src="1769606294276_image.png" alt="BRAND IT Cohort 2 Flyer">
                 </div>
             </div>
         </div>
@@ -2058,4 +2075,16 @@
         }, observerOptions);
 
         // Observe all animated elements
-        document.querySelectorAll('.service-card, .event-card, .testimonia
+        document.querySelectorAll('.service-card, .event-card, .testimonial-card, .workflow-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</body>
+</html>
