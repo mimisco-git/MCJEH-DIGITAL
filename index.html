@@ -166,12 +166,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--dark);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
+            z-index: 10001;
             transition: opacity 0.5s, visibility 0.5s;
         }
 
@@ -181,24 +181,40 @@
         }
 
         .loader {
-            width: 80px;
-            height: 80px;
-            border: 4px solid transparent;
-            border-top-color: var(--primary);
+            width: 100px;
+            height: 100px;
+            border: 5px solid transparent;
+            border-top-color: var(--white);
+            border-right-color: var(--white);
             border-radius: 50%;
             animation: spin 1s linear infinite;
+            margin-bottom: 2rem;
         }
 
         .loader-text {
             color: var(--white);
-            margin-top: 2rem;
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: 5px;
+            font-weight: 900;
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            font-family: 'Poppins', sans-serif;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .loader-tagline {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            margin-top: 1rem;
+            letter-spacing: 2px;
+            font-weight: 600;
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
         }
 
         /* ============ GLASS NAVIGATION ============ */
@@ -287,7 +303,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: url('hero-background.jpg') center center/cover no-repeat;
             position: relative;
             overflow: hidden;
             padding-top: 80px;
@@ -300,8 +316,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
+            background: linear-gradient(135deg, rgba(0, 82, 255, 0.85), rgba(103, 58, 183, 0.85));
+            z-index: 1;
         }
 
         .hero-content {
@@ -1175,7 +1191,8 @@
     <!-- Loader -->
     <div class="loader-wrapper">
         <div class="loader"></div>
-        <div class="loader-text">MCJEH</div>
+        <div class="loader-text">MCJEH DIGITAL</div>
+        <div class="loader-tagline">#WePromoteYouGrow</div>
     </div>
 
     <!-- Navigation -->
@@ -1646,7 +1663,7 @@
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <p><i class="fas fa-map-marker-alt"></i> Owerri, Imo State, Nigeria</p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:teammcjehdigital@gmail.com">teammcjehdigital@gmail.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#9aeefffbf7f7f9f0fff2fef3fdf3eefbf6dafdf7fbf3f6b4f9f5f7"><span class="__cf_email__" data-cfemail="e29687838f8f8188878a868b858b96838ea2858f838b8ecc818d8f">[email&#160;protected]</span></a></p>
                 <p><i class="fas fa-phone"></i> <a href="tel:+2349081953680">+234 908 195 3680</a></p>
                 <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/2349081953680" target="_blank">WhatsApp Chat</a></p>
             </div>
@@ -1657,30 +1674,32 @@
     </footer>
 
     <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- Scripts -->
     <script>
         // Event Modal Management
         function closeModal() {
             document.getElementById('eventModal').classList.add('hidden');
-            localStorage.setItem('modalShown', 'true');
+            sessionStorage.setItem('modalShown', 'true');
         }
 
-        // Show modal on page load (only once per session)
+        // Show modal after loader (only once per session)
         window.addEventListener('load', () => {
-            const modalShown = localStorage.getItem('modalShown');
-            if (!modalShown) {
-                setTimeout(() => {
-                    document.getElementById('eventModal').classList.remove('hidden');
-                }, 2000);
-            }
-            
-            // Hide loader
             const loader = document.querySelector('.loader-wrapper');
+            const modalShown = sessionStorage.getItem('modalShown');
+            
+            // Hide loader after 2 seconds
             setTimeout(() => {
                 loader.classList.add('fade-out');
-            }, 1500);
+                
+                // Show event modal immediately after loader (if not shown this session)
+                if (!modalShown) {
+                    setTimeout(() => {
+                        document.getElementById('eventModal').classList.remove('hidden');
+                    }, 500); // Small delay for smooth transition
+                }
+            }, 2000);
         });
 
         // Close modal when clicking outside
@@ -1852,12 +1871,4 @@
         }, observerOptions);
 
         // Observe all animated elements
-        document.querySelectorAll('.service-card, .event-card, .testimonial-card, .workflow-step').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
-</body>
-</html>
+        document.querySelectorAll('.service-card, .event-card, .testimonia
